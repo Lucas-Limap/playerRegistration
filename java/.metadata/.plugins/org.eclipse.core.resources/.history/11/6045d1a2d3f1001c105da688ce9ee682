@@ -1,0 +1,89 @@
+package br.edu.univas.bd.fut.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity
+public class detalhesTime {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idDetalhes;
+	private String cidade;
+	private String mascote;
+	private String torcedor;
+	private String anoFundacao;
+	private Date dtRegistro;
+	
+	@OneToOne
+	@JoinColumn(name = "idtime_fk")
+	private Time idTime;
+	
+	public detalhesTime () {
+		
+	}
+
+	public Integer getIdDetalhes() {
+		return idDetalhes;
+	}
+
+	public void setIdDetalhes(Integer idDetalhes) {
+		this.idDetalhes = idDetalhes;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getMascote() {
+		return mascote;
+	}
+
+	public void setMascote(String mascote) {
+		this.mascote = mascote;
+	}
+
+	public String getTorcedor() {
+		return torcedor;
+	}
+
+	public void setTorcedor(String torcedor) {
+		this.torcedor = torcedor;
+	}
+
+	public String getAnoFundacao() {
+		return anoFundacao;
+	}
+
+	public void setAnoFundacao(String anoFundacao) {
+		this.anoFundacao = anoFundacao;
+	}
+
+	public Date getDtRegistro() {
+		return dtRegistro;
+	}
+
+	public void setDtRegistro(Date dtRegistro) {
+		this.dtRegistro = dtRegistro;
+	}
+
+	public Time getIdTime() {
+		return idTime;
+	}
+
+	public void setIdTime(Time detalhesTime) {
+		this.idTime = detalhesTime;
+	}
+
+
+}

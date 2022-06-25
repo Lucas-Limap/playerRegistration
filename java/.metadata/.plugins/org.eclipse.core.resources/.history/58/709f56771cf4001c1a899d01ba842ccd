@@ -1,0 +1,60 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class maintenanceTeam {
+	
+	EntityManager em = HibernateUtil.getEntityManager();
+	Time team = new Time();
+	Date d = new Date();
+	
+	public void createTeam (String nome, String pais, String Estadio) {
+		
+		team.setNome(nome);
+		team.setPais(pais);
+		team.setEstadio(Estadio);
+		team.setDtRegistro(d);
+
+		em.getTransaction().begin();
+		em.persist(team);
+		em.getTransaction().commit();
+	
+	}
+	
+	public void updateTeam(){
+		Time objTeam = em.find(Time.class, 1);
+		
+		objTeam.setNome("São Paulo");
+		objTeam.setPais("Brasil");
+		objTeam.setEstadio("Morumbi");
+		objTeam.setDtRegistro(d);
+
+		em.getTransaction().begin();
+		em.merge(objTeam);
+		em.getTransaction().commit();
+		
+	}
+	
+	public void removeTeam(){
+		Time objTeam = em.find(Time.class, 1);
+
+		em.getTransaction().begin();
+		em.remove(objTeam);
+		em.getTransaction().commit();
+	}
+	
+	public void queriesTeam () {
+		String ql = "select t from Time t";
+		TypedQuery<Time> query = em.createQuery(ql, Time.class);
+		List<Time> teams = query.getResultList();
+		System.out.println("Time: " + teams);
+	}
+	
+}

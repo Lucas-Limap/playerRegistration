@@ -1,0 +1,15 @@
+package br.edu.univas.bd.fut;
+
+
+import br.edu.univas.bd.fut.dao.maintenanceDetailTeams;
+import br.edu.univas.bd.fut.dao.maintenancePlayer;
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class App{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	
+	public static void main( String[] args ){
+		
+	}
+}

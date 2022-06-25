@@ -1,0 +1,29 @@
+package br.edu.univas.bd.fut;
+
+
+import java.util.Scanner;
+
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class App{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	
+	public static void main( String[] args ){
+		
+		Scanner input = new Scanner(System.in);
+		
+		do {
+			
+			System.out.print("1 - Cadastro Time\r"
+							+"2 - Alterar Time\r"
+							+"4 - Remover Time\r"
+							+"5 - Pesquisar Times\r"
+							+"9 - Sair");
+			String op = input.nextLine();
+			
+		}while(true);
+		
+		
+	}
+}

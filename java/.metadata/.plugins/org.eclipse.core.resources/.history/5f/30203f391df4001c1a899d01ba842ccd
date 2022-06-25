@@ -1,0 +1,25 @@
+package br.edu.univas.bd.fut;
+
+
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class App{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	
+	public static void main( String[] args ){
+		
+		do {
+			
+			System.out.print("1 - Cadastro Time\r"
+							+"2 - Alterar Time\r"
+							+"4 - Remover Time\r"
+							+"5 - Pesquisar Times\r");
+			
+			
+			
+		}while(false);
+		
+		
+	}
+}

@@ -1,0 +1,82 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import br.edu.univas.bd.fut.entities.DetalhesTime;
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class maintenanceDetailTeams {
+	
+		Scanner input = new Scanner(System.in);
+		DetalhesTime DetailsTeam = new DetalhesTime();
+		Date d = new Date();
+		EntityManager em = HibernateUtil.getEntityManager();
+	
+	public void createDetailTeam () {
+		
+		System.out.println("cidade");
+		DetailsTeam.setCidade(input.nextLine());
+		System.out.println("mascote");
+		DetailsTeam.setMascote(input.nextLine());
+		System.out.println("torcedor");
+		DetailsTeam.setTorcedor(input.nextLine());
+		System.out.println("ano fundacao");
+		DetailsTeam.setAnoFundacao(input.nextLine());
+		DetailsTeam.setDtRegistro(d);
+		
+		System.out.println("Time");
+		Time team = em.find(Time.class, input.nextInt());
+		input.nextLine();
+		DetailsTeam.setIdTime(team);
+
+		em.getTransaction().begin();
+		em.persist(DetailsTeam);
+		em.getTransaction().commit();
+	
+	}
+	
+	public void updateDetailTeam(){
+		System.out.println("TIME");
+		DetalhesTime objDetailTeam = em.find(DetalhesTime.class, input.nextInt());
+		input.nextLine();
+		
+		System.out.println("cidade");
+		objDetailTeam.setCidade(input.nextLine());
+		System.out.println("mascote");
+		objDetailTeam.setMascote(input.nextLine());
+		System.out.println("torcedor");
+		objDetailTeam.setTorcedor(input.nextLine());
+		System.out.println("ano fundacao");
+		objDetailTeam.setAnoFundacao(input.nextLine());
+		objDetailTeam.setDtRegistro(d);
+
+		em.getTransaction().begin();
+		em.persist(objDetailTeam);
+		em.getTransaction().commit();
+		
+	}
+	
+	public void removeDetailTeam(){
+		System.out.println("TIME");
+		DetalhesTime objDetailTeam = em.find(DetalhesTime.class, input.nextInt());
+		input.nextLine();
+
+		em.getTransaction().begin();
+		em.remove(objDetailTeam);
+		em.getTransaction().commit();
+	}
+	
+	public void queriesPlayer () {
+		String q2 = "select dt from DetalhesTime dt";
+		TypedQuery<DetalhesTime> query = em.createQuery(q2, DetalhesTime.class);
+		List<DetalhesTime> detailsTeams = query.getResultList();
+		System.out.println("DetalhesTime: " + detailsTeams);
+	}
+
+}

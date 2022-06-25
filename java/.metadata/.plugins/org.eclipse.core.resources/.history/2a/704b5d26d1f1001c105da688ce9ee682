@@ -1,0 +1,17 @@
+package br.edu.univas.bd.fut.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+
+@Entity
+public class detalhesTime {
+	
+	private Integer idDetalhes;
+	private String cidade;
+	private String mascote;
+	private String torcedor;
+	private String anoFundacao;
+	private Date dtRegistro;
+
+}

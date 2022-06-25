@@ -1,0 +1,42 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+
+import br.edu.univas.bd.fut.entities.DetalhesTime;
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class NewDetailTeams {
+	
+Scanner input = new Scanner(System.in);
+	
+	public void createDetailTeam () {
+		DetalhesTime DetailsTeam = new DetalhesTime();
+		Date d = new Date();
+		
+		System.out.println("cidade");
+		DetailsTeam.setCidade(input.nextLine());
+		System.out.println("mascote");
+		DetailsTeam.setMascote(input.nextLine());
+		System.out.println("torcedor");
+		DetailsTeam.setTorcedor(input.nextLine());
+		System.out.println("ano fundacao");
+		DetailsTeam.setAnoFundacao(input.nextLine());
+		DetailsTeam.setDtRegistro(d);
+		
+		EntityManager em = HibernateUtil.getEntityManager();
+		System.out.println("Time");
+		Time team = em.find(Time.class, input.nextInt());
+		input.nextLine();
+		DetailsTeam.setIdTime(team);
+
+		em.getTransaction().begin();
+		em.persist(DetailsTeam);
+		em.getTransaction().commit();
+	
+	}
+
+}

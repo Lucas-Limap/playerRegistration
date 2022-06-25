@@ -1,0 +1,44 @@
+package br.edu.univas.bd.fut;
+
+import java.util.Scanner;
+
+import br.edu.univas.bd.fut.dao.maintenanceDetailTeams;
+import br.edu.univas.bd.fut.dao.maintenancePlayer;
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class App{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	static maintenancePlayer np = new maintenancePlayer();
+	static maintenanceDetailTeams ndt = new maintenanceDetailTeams(); 
+	static Scanner input = new Scanner(System.in);
+	
+	public static void main( String[] args ){
+		
+		
+		do {
+			
+			System.out.print("1 - Manutenção de Times \n");
+			System.out.print("2 - Manutenção de Jogadores \n");
+			System.out.print("3 - Manutenção de Detalhes dos Times \n");
+			
+		}while(false);
+    	
+//		nt.createTeam();
+//		nt.updateTeam();
+//		nt.removeTeam();
+//		nt.queriesTeam();
+		
+//		np.createPlayer();
+//		np.updatePlayer();
+//		np.removePlayer();
+//		np.queriesPlayer();
+		
+//		ndt.createDetailTeam();
+//		ndt.updateDetailTeam();
+//		ndt.removeDetailTeam();
+//		ndt.queriesPlayer();
+		
+		
+    }
+}

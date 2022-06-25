@@ -1,0 +1,64 @@
+package br.edu.univas.bd.fut;
+
+import java.util.Scanner;
+
+import br.edu.univas.bd.fut.dao.maintenanceDetailTeams;
+import br.edu.univas.bd.fut.dao.maintenancePlayer;
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class App{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	static maintenancePlayer np = new maintenancePlayer();
+	static maintenanceDetailTeams ndt = new maintenanceDetailTeams(); 
+	static Scanner input = new Scanner(System.in);
+	
+	public static void main( String[] args ){
+		
+		
+		do {
+			
+			System.out.print("1 - Manutenção de Times \n");
+			System.out.print("2 - Manutenção de Jogadores \n");
+			System.out.print("3 - Manutenção de Detalhes dos Times \n");
+			Integer op = input.nextInt();
+			
+			if ( op == 1 ) {
+				System.out.println("1 - Criar Time" );
+				System.out.println("2 - Criar Alterar Time" );
+				System.out.println("3 - Remover Time" );
+				System.out.println("4 - Relatório de Times" );
+
+				Integer op2 = input.nextInt();
+				
+				if (op2 == 1) {
+//					nt.createTeam();
+					
+				}else if (op2 == 2){
+//					nt.updateTeam();
+					
+				}else if (op2 == 3) {
+//					nt.removeTeam();
+					
+				}else if (op2 == 4) {
+//					nt.queriesTeam();
+				}
+				
+			}
+			
+		}while(true);
+    	
+		
+//		np.createPlayer();
+//		np.updatePlayer();
+//		np.removePlayer();
+//		np.queriesPlayer();
+		
+//		ndt.createDetailTeam();
+//		ndt.updateDetailTeam();
+//		ndt.removeDetailTeam();
+//		ndt.queriesPlayer();
+		
+		
+    }
+}

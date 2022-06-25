@@ -1,0 +1,88 @@
+package br.edu.univas.bd.fut.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+
+@Entity
+public class Jogador {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@ManyToOne
+	@JoinColumn(name = "idTime_pk")
+	private Integer idJogador;
+	private Time idTime_pk;
+	private String nome;
+	private String nacionalidade;
+	private String cidade;
+	private String anoNascimento;
+	private Date dtRegistro;
+	
+	public Jogador() {
+		
+	}
+
+	public Integer getIdJogador() {
+		return idJogador;
+	}
+
+	public void setIdJogador(Integer idJogador) {
+		this.idJogador = idJogador;
+	}
+
+	public Time getIdTime_pk() {
+		return idTime_pk;
+	}
+
+	public void setIdTime_pk(Time idTime_pk) {
+		this.idTime_pk = idTime_pk;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNacionalidade() {
+		return nacionalidade;
+	}
+
+	public void setNacionalidade(String nacionalidade) {
+		this.nacionalidade = nacionalidade;
+	}
+
+	public String getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+	public String getAnoNascimento() {
+		return anoNascimento;
+	}
+
+	public void setAnoNascimento(String anoNascimento) {
+		this.anoNascimento = anoNascimento;
+	}
+
+	public Date getDtRegistro() {
+		return dtRegistro;
+	}
+
+	public void setDtRegistro(Date dtRegistro) {
+		this.dtRegistro = dtRegistro;
+	}
+	
+}

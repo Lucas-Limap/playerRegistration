@@ -1,0 +1,28 @@
+package br.edu.univas.bd.fut.entities;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class detalhesTime {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer idDetalhes;
+	private String cidade;
+	private String mascote;
+	private String torcedor;
+	private String anoFundacao;
+	private Date dtRegistro;
+	
+	@OneToOne(fetch = FetchType.LAZY )
+	private Time idTime_fk;
+	
+
+}

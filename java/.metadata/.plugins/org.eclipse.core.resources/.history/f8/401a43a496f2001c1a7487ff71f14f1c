@@ -1,0 +1,41 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+
+import br.edu.univas.bd.fut.entities.Jogador;
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class NewPlayer {
+	
+Scanner input = new Scanner(System.in);
+	
+	public void createPlayer () {
+		Jogador player = new Jogador();
+		Date d = new Date();
+		EntityManager em = HibernateUtil.getEntityManager();
+		
+		System.out.println("Time");
+		Time team = em.find(Time.class, input.nextInt());
+		
+		System.out.println("nome");
+		player.setNome(input.nextLine());
+		System.out.println("nacionalidade");
+		player.setNacionalidade(input.nextLine());
+		System.out.println("cidade");
+		player.setCidade(input.nextLine());
+		System.out.println("ano nascimento");
+		player.setAnoNascimento(input.nextLine());
+		player.setDtRegistro(d);
+		player.setTime(team);
+
+		em.getTransaction().begin();
+		em.persist(player);
+		em.getTransaction().commit();
+	
+	}
+
+}

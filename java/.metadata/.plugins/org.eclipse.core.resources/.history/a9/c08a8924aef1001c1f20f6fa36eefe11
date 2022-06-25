@@ -1,0 +1,23 @@
+package br.edu.univas.bd.fut.entities;
+
+import java.util.Date;
+
+public class Jogador {
+	
+	private Integer idJogador;
+	private Integer idTime_pk;
+	private String nome;
+	private String nacionalidade;
+	private String cidade;
+	private String anoNascimento;
+	private Date dtRegistro;
+	
+	public Jogador() {
+		
+	}
+	
+	
+	
+	
+
+}

@@ -1,0 +1,66 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import br.edu.univas.bd.fut.entities.DetalhesTime;
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class maintenanceDetailTeams {
+	
+		DetalhesTime DetailsTeam = new DetalhesTime();
+		Date d = new Date();
+		EntityManager em = HibernateUtil.getEntityManager();
+	
+	public void createDetailTeam () {
+		
+		DetailsTeam.setCidade("SP");
+		DetailsTeam.setMascote("São Paulo");
+		DetailsTeam.setTorcedor("Paulista");
+		DetailsTeam.setAnoFundacao("1990");
+		DetailsTeam.setDtRegistro(d);
+		
+		Time team = em.find(Time.class, 1 );
+		DetailsTeam.setIdTime(team);
+
+		em.getTransaction().begin();
+		em.persist(DetailsTeam);
+		em.getTransaction().commit();
+	
+	}
+	
+	public void updateDetailTeam(){
+		DetalhesTime objDetailTeam = em.find(DetalhesTime.class, 1);
+		
+		objDetailTeam.setCidade("São Paulo");
+		objDetailTeam.setMascote("Santo Paulo");
+		objDetailTeam.setTorcedor("Tricolor");
+		objDetailTeam.setAnoFundacao("1930");
+		objDetailTeam.setDtRegistro(d);
+
+		em.getTransaction().begin();
+		em.persist(objDetailTeam);
+		em.getTransaction().commit();
+		
+	}
+	
+	public void removeDetailTeam(){
+		DetalhesTime objDetailTeam = em.find(DetalhesTime.class, 1);
+
+		em.getTransaction().begin();
+		em.remove(objDetailTeam);
+		em.getTransaction().commit();
+	}
+	
+	public void queriesPlayer () {
+		String q2 = "select dt from DetalhesTime dt";
+		TypedQuery<DetalhesTime> query = em.createQuery(q2, DetalhesTime.class);
+		List<DetalhesTime> detailsTeams = query.getResultList();
+		System.out.println("DetalhesTime: " + detailsTeams);
+	}
+
+}

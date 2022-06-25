@@ -1,0 +1,36 @@
+package br.edu.univas.bd.fut;
+
+
+import java.util.Scanner;
+
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class RunTeam{
+    
+	static maintenanceTeam mt = new maintenanceTeam();
+	
+	public static void main( String[] args ){
+		
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+
+			System.out.print("1 - Cadastro Time\r"
+							+"2 - Alterar Time\r"
+							+"3 - Remover Time\r"
+							+"4 - Pesquisar Times\r"
+							+"9 - Sair\r\r");
+			int op = input.nextInt();
+			input.nextLine();
+			
+			
+			if(op == 1) {
+				mt.createTeam("Saão Paulo", "São Paulo", "Morumbi");
+			}else if(op == 2) {
+				mt.updateTeam(9, "São Paulo FC", "Brasil", "Morumbi");
+			}else if(op == 3) {
+				mt.removeTeam(9);
+			}else if(op == 4) {
+				mt.queriesTeam();
+			}			
+	}
+}

@@ -1,0 +1,43 @@
+package br.edu.univas.bd.fut;
+
+
+import java.util.Scanner;
+
+import br.edu.univas.bd.fut.dao.maintenanceTeam;
+
+public class RunDeatilsTeam{
+    
+	static maintenanceTeam nt = new maintenanceTeam();
+	
+	public static void main( String[] args ){
+		
+		@SuppressWarnings("resource")
+		Scanner input = new Scanner(System.in);
+		
+		
+		do {
+		
+			System.out.print("1 - Cadastro Time\r"
+							+"2 - Alterar Time\r"
+							+"3 - Remover Time\r"
+							+"4 - Pesquisar Times\r"
+							+"9 - Sair\r");
+			int op = input.nextInt();
+			input.nextLine();
+			
+			
+			if(op == 1) {
+				
+			}else if(op == 2) {
+				
+			}else if(op == 3) {
+				
+			}else if(op == 4) {
+				
+			}			
+			
+		}while(true);
+		
+		
+	}
+}

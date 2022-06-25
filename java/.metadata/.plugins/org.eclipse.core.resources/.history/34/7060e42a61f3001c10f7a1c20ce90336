@@ -1,0 +1,87 @@
+package br.edu.univas.bd.fut.dao;
+
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
+import br.edu.univas.bd.fut.entities.Jogador;
+import br.edu.univas.bd.fut.entities.Time;
+import br.edu.univas.bd.fut.util.HibernateUtil;
+
+public class maintenancePlayer {
+	
+		Scanner input = new Scanner(System.in);
+		Jogador player = new Jogador();
+		Date d = new Date();
+		EntityManager em = HibernateUtil.getEntityManager();
+	
+	public void createPlayer () {
+		
+		System.out.println("nome");
+		player.setNome(input.nextLine());
+		System.out.println("nacionalidade");
+		player.setNacionalidade(input.nextLine());
+		System.out.println("cidade");
+		player.setCidade(input.nextLine());
+		System.out.println("ano nascimento");
+		player.setAnoNascimento(input.nextLine());
+		player.setDtRegistro(d);
+		
+		System.out.println("Time");
+		Time team = em.find(Time.class, input.nextInt());
+		input.nextLine();
+		player.setTime(team);
+
+		em.getTransaction().begin();
+		em.persist(player);
+		em.getTransaction().commit();
+	
+	}
+	
+	public void updatePlayer(){
+		System.out.println("TIME");
+		Jogador objPlayer = em.find(Jogador.class, input.nextInt());
+		input.nextLine();
+		
+		System.out.println("nome");
+		objPlayer.setNome(input.nextLine());
+		System.out.println("nacionalidade");
+		objPlayer.setNacionalidade(input.nextLine());
+		System.out.println("cidade");
+		objPlayer.setCidade(input.nextLine());
+		System.out.println("ano nascimento");
+		objPlayer.setAnoNascimento(input.nextLine());
+		objPlayer.setDtRegistro(d);
+		
+		System.out.println("Time");
+		Time team = em.find(Time.class, input.nextInt());
+		input.nextLine();
+		objPlayer.setTime(team);
+
+		em.getTransaction().begin();
+		em.merge(objPlayer);
+		em.getTransaction().commit();
+		
+	}
+	
+	public void removePlayer(){
+		System.out.println("TIME");
+		Jogador objPlayer = em.find(Jogador.class, input.nextInt());
+		input.nextLine();
+
+		em.getTransaction().begin();
+		em.remove(objPlayer);
+		em.getTransaction().commit();
+	}
+	
+	public void queriesPlayer () {
+		String ql = "select t from Time t";
+		TypedQuery<Time> query = em.createQuery(ql, Time.class);
+		List<Time> teams = query.getResultList();
+		System.out.println("Time: " + teams);
+	}
+
+}
